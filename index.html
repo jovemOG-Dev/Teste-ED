@@ -15,9 +15,7 @@
             --text: #1e293b;
         }
 
-        * {
-            box-sizing: border-box; /* Garante que padding não aumente a largura total */
-        }
+        * { box-sizing: border-box; }
 
         body {
             font-family: 'Inter', system-ui, sans-serif;
@@ -25,14 +23,14 @@
             color: var(--text);
             line-height: 1.6;
             margin: 0;
-            padding: 10px; /* Padding reduzido para mobile */
+            padding: 10px;
         }
 
         .container {
             max-width: 900px;
             margin: 0 auto;
             background: var(--card);
-            padding: 20px; /* Padding interno menor para mobile */
+            padding: 20px;
             border-radius: 12px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
@@ -42,7 +40,7 @@
             color: var(--primary); 
             border-bottom: 2px solid #e2e8f0; 
             padding-bottom: 20px;
-            font-size: 1.5rem; /* Fonte adaptável */
+            font-size: 1.5rem;
         }
 
         h2 { 
@@ -69,13 +67,29 @@
             font-size: 0.85rem;
             margin: 15px 0;
             white-space: pre-wrap;
-            overflow-x: auto; /* Scroll horizontal se o código for muito longo */
+            overflow-x: auto;
+        }
+
+        /* Ajuste na área da imagem: sem bordas ou fundo cinza */
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+            padding: 0;
+        }
+
+        /* CSS Responsivo para a imagem */
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 4px; /* Opcional: apenas um leve arredondado na foto */
         }
 
         .options-list { list-style: none; padding: 0; }
         
         .options-list label {
-            display: block; /* Facilita o clique em telas touch */
+            display: block;
             padding: 12px;
             margin: 8px 0;
             border-radius: 6px;
@@ -94,7 +108,7 @@
 
         textarea {
             width: 100%;
-            height: 150px;
+            height: 120px;
             padding: 12px;
             border: 1px solid #cbd5e1;
             border-radius: 6px;
@@ -135,7 +149,6 @@
         .wrong { background: #fee2e2; color: var(--error); border: 1px solid var(--error); }
         .answer-key { background: #e0f2fe; color: var(--info); border: 1px solid var(--info); margin-top: 10px; }
 
-        /* --- MEDIA QUERIES PARA RESPONSIVIDADE --- */
         @media (min-width: 768px) {
             body { padding: 40px 20px; }
             .container { padding: 40px; }
@@ -151,7 +164,7 @@
 
     <h2>Parte 1: Múltipla Escolha</h2>
 
-    <div class="question-block" id="q1-block">
+    <div class="question-block">
         <p><strong>1)</strong> Considerando as operações de ordenação e busca em um array de objetos qualquer, podemos afirmar que:<br>
         i) É possível ordenar, pelo método bolha, esse conjunto de dados.<br>
         ii) É possível realizar busca pelo método binário, nesse conjunto de dados.<br>
@@ -167,7 +180,7 @@
         <div id="f1" class="feedback"></div>
     </div>
 
-    <div class="question-block" id="q2-block">
+    <div class="question-block">
         <p><strong>2)</strong> Comparando lista ligada com array e considerando que os dois conjuntos estejam ordenados, podemos afirmar que:</p>
         <div class="options-list">
             <label><input type="radio" name="q2" value="a"> a) A busca na lista ligada é mais rápida que no array.</label>
@@ -179,61 +192,39 @@
         <div id="f2" class="feedback"></div>
     </div>
 
-    <div class="question-block" id="q3-block">
-        <p><strong>3)</strong> Considere o trecho Java (alocação dinâmica):</p>
-        <div class="code-snippet">Teste a = new Teste();
-Teste b = new Teste();
-a = b;</div>
-        <p>Com o garbage collector instantâneo:</p>
-        <div class="options-list">
-            <label><input type="radio" name="q3" value="a"> a) Restará um endereço alocado (o primeiro foi desalocado).</label>
-            <label><input type="radio" name="q3" value="b"> b) Restarão dois endereços alocados.</label>
-            <label><input type="radio" name="q3" value="c"> c) O segundo endereço será desalocado.</label>
-            <label><input type="radio" name="q3" value="d"> d) O primeiro fica alocado mas sem referência.</label>
-            <label><input type="radio" name="q3" value="e"> e) O segundo fica sem referência.</label>
-        </div>
-        <div id="f3" class="feedback"></div>
-    </div>
-
-    <div class="question-block" id="q4-block">
-        <p><strong>4)</strong> Considere o método (referência "atual" é o último nó):</p>
-        <div class="code-snippet">public void mostrar(){
-    Elemento e = inicio;
-    while(e != atual){
-        System.out.println(e.getObjeto());
-        e = e.getProx();
-    }
-}</div>
-        <div class="options-list">
-            <label><input type="radio" name="q4" value="a"> a) Exibe todos os elementos da lista.</label>
-            <label><input type="radio" name="q4" value="b"> b) Exibe todos exceto o último.</label>
-            <label><input type="radio" name="q4" value="c"> c) Exibe todos exceto o primeiro.</label>
-            <label><input type="radio" name="q4" value="d"> d) Entra em loop infinito.</label>
-            <label><input type="radio" name="q4" value="e"> e) Exibe apenas o primeiro.</label>
-        </div>
-        <div id="f4" class="feedback"></div>
-    </div>
-
-    <h2>Parte 2: Dissertativas</h2>
+    <h2>Parte 2: Questões Dissertativas</h2>
 
     <div class="question-block">
-        <p><strong>1)</strong> Busca linear em array de objetos:</p>
-        <textarea id="d1" placeholder="public int pesquisar(int id) { ... }"></textarea>
+        <p><strong>1) (3 pontos)</strong> O método pesquisar recebe um parâmetro do tipo int e realiza a busca linear (sequencial) em um array de objetos. Se achar o id, retorna o índice localizado, senão, retorna -1. Usando como base as informações da classe Array, implemente a lógica descrita para o método pesquisar.</p>
+        <div class="code-snippet">public class Array {
+    private static Pessoa[] lista = new Pessoa[4];
+    private static int indicePessoa = 0;
+
+    public int pesquisar(int id) {
+        // Implementar lógica aqui
+    }
+}</div>
+        <textarea id="d1" placeholder="Escreva seu código aqui..."></textarea>
         <div id="fd1" class="feedback answer-key"></div>
     </div>
 
     <div class="question-block">
-        <p><strong>2)</strong> Sobre lista simplesmente ligada:</p>
-        <p>a) Contar valores pares:</p>
+        <p><strong>2) (3 pontos)</strong> Dado o desenho que representa uma lista simplesmente ligada, faça o que se pede:</p>
+        
+        <div class="image-container">
+            <img src="assets/Q4.jpg" alt="Representação da lista ligada">
+        </div>
+
+        <p><strong>a)</strong> Escreva um método para realizar a contagem de todas as células em uma lista, com valor par de n. Considere que n é do tipo int e está encapsulado.</p>
         <textarea id="d2a" placeholder="public int contarPares() { ... }"></textarea>
         <div id="fd2a" class="feedback answer-key"></div>
         
-        <p>b) Instruções para remover a última célula (n=8):</p>
-        <textarea id="d2b" placeholder="ref.setProx(null); ..."></textarea>
+        <p><strong>b)</strong> Escreva todas as instruções específicas (em Java) para remover a célula indicada no desenho acima (n=8). Não é necessário escrever o método!</p>
+        <textarea id="d2b" placeholder="Instruções de remoção..."></textarea>
         <div id="fd2b" class="feedback answer-key"></div>
 
-        <p>c) Justificativa sobre remoção da memória:</p>
-        <textarea id="d2c" placeholder="Explique sobre o Garbage Collector..."></textarea>
+        <p><strong>c)</strong> Após a execução das instruções do item b, a célula foi instantaneamente removida da memória? Justifique.</p>
+        <textarea id="d2c" placeholder="Justificativa..."></textarea>
         <div id="fd2c" class="feedback answer-key"></div>
     </div>
 
@@ -242,40 +233,44 @@ a = b;</div>
 
 <script>
     function validarProva() {
-        const gabaritoObjetivo = { q1: 'a', q2: 'e', q3: 'a', q4: 'b' };
+        const gabaritoObjetivo = { q1: 'a', q2: 'e' };
+        
         const gabaritoDissertativo = {
-            d1: "Sugestão:\nfor(int i=0; i < indicePessoa; i++) {\n  if(lista[i].getId() == id) return i;\n}\nreturn -1;",
-            d2a: "Sugestão:\npublic int contarPares() {\n  int cont = 0;\n  Elemento e = inicio;\n  while(e != null) {\n    if(e.getValor() % 2 == 0) cont++;\n    e = e.getProx();\n  }\n  return cont;\n}",
-            d2b: "Sugestão:\nref.setProx(null);\natual = ref;",
-            d2c: "Sugestão:\nNão é instantânea. O objeto fica sem referência e o Garbage Collector o removerá quando for executado."
+            d1: "Sugestão de Resposta:\nfor(int i = 0; i < indicePessoa; i++) {\n    if(lista[i].getId() == id) {\n        return i;\n    }\n}\nreturn -1;",
+            d2a: "Sugestão de Resposta:\npublic int contarPares() {\n    int cont = 0;\n    Elemento e = inicio;\n    while(e != null) {\n        if(e.getN() % 2 == 0) cont++;\n        e = e.getProx();\n    }\n    return cont;\n}",
+            d2b: "Sugestão de Resposta:\nref.setProx(null);\natual = ref; // Conforme o desenho, remove o nó subsequente ao 'ref'",
+            d2c: "Sugestão de Resposta:\nNão. Em Java, o Garbage Collector não atua de forma instantânea. O objeto torna-se elegível para coleta quando não há mais referências para ele, mas a limpeza real ocorre conforme o gerenciamento da JVM."
         };
 
         for (let q in gabaritoObjetivo) {
             const el = document.querySelector(`input[name="${q}"]:checked`);
             const feedback = document.getElementById('f' + q.slice(1));
-            feedback.style.display = 'block';
-
-            if (el) {
-                if (el.value === gabaritoObjetivo[q]) {
-                    feedback.innerText = "✅ Correto!";
-                    feedback.className = "feedback correct";
+            if(feedback) {
+                feedback.style.display = 'block';
+                if (el) {
+                    if (el.value === gabaritoObjetivo[q]) {
+                        feedback.innerText = "✅ Correto!";
+                        feedback.className = "feedback correct";
+                    } else {
+                        feedback.innerText = "❌ Incorreto. Resposta: " + gabaritoObjetivo[q].toUpperCase();
+                        feedback.className = "feedback wrong";
+                    }
                 } else {
-                    feedback.innerText = "❌ Incorreto. Resposta: " + gabaritoObjetivo[q].toUpperCase();
+                    feedback.innerText = "⚠️ Questão não respondida.";
                     feedback.className = "feedback wrong";
                 }
-            } else {
-                feedback.innerText = "⚠️ Questão não respondida.";
-                feedback.className = "feedback wrong";
             }
         }
 
         for (let d in gabaritoDissertativo) {
             const feedbackD = document.getElementById('f' + d);
-            feedbackD.innerText = gabaritoDissertativo[d];
-            feedbackD.style.display = 'block';
+            if(feedbackD) {
+                feedbackD.innerText = gabaritoDissertativo[d];
+                feedbackD.style.display = 'block';
+            }
         }
 
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
 </script>
 
