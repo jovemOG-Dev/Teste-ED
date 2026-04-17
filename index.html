@@ -70,20 +70,18 @@
             overflow-x: auto;
         }
 
-        /* Ajuste na área da imagem: sem bordas ou fundo cinza */
         .image-container {
             text-align: center;
             margin: 20px 0;
             padding: 0;
         }
 
-        /* CSS Responsivo para a imagem */
         .image-container img {
             max-width: 100%;
             height: auto;
             display: block;
             margin: 0 auto;
-            border-radius: 4px; /* Opcional: apenas um leve arredondado na foto */
+            border-radius: 4px;
         }
 
         .options-list { list-style: none; padding: 0; }
@@ -183,13 +181,49 @@
     <div class="question-block">
         <p><strong>2)</strong> Comparando lista ligada com array e considerando que os dois conjuntos estejam ordenados, podemos afirmar que:</p>
         <div class="options-list">
-            <label><input type="radio" name="q2" value="a"> a) A busca na lista ligada é mais rápida que no array.</label>
-            <label><input type="radio" name="q2" value="b"> b) A busca no array é mais rápida porque só se faz busca linear no array.</label>
-            <label><input type="radio" name="q2" value="c"> c) Ambos são equivalentes em performance.</label>
-            <label><input type="radio" name="q2" value="d"> d) A lista ligada permite busca binária eficiente.</label>
-            <label><input type="radio" name="q2" value="e"> e) A busca no array é mais rápida do que na lista ligada porque só é viável fazer busca binária no array (acesso direto).</label>
+            <label><input type="radio" name="q2" value="a"> a) A busca na lista ligada é mais rápida do que no array porque só é viável fazer busca binária na lista ligada e esse método é mais eficiente do que a busca linear.</label>
+            <label><input type="radio" name="q2" value="b"> b) A busca no array é mais rápida do que na lista ligada porque só é viável fazer busca linear no array e esse método é mais eficiente do que a busca binária.</label>
+            <label><input type="radio" name="q2" value="c"> c) A busca no array é mais rápida do que na lista ligada porque só é viável fazer busca linear no array e esse método é mais eficiente do que a busca binária.</label>
+            <label><input type="radio" name="q2" value="d"> d) A eficiência de pesquisa no array e na lista ligada são equivalentes, já que ambos implementam de forma viável a busca binária que é mais eficiente do que a busca linear.</label>
+            <label><input type="radio" name="q2" value="e"> e) A busca no array é mais rápida do que na lista ligada porque só é viável fazer busca binária no array e esse método é mais eficiente do que a busca linear.</label>
         </div>
         <div id="f2" class="feedback"></div>
+    </div>
+
+    <div class="question-block">
+        <p><strong>3)</strong> Considere o seguinte trecho de código em Java. Ele se refere à alocação dinâmica de memória, isto é, alocação em tempo de execução:</p>
+        <div class="code-snippet">Teste a=new Teste();
+Teste b=new Teste();
+a=b;</div>
+        <p>Considerando que foram executadas as três instruções e que o garbage collector tenha atuação instantânea, é correto dizer que:</p>
+        <div class="options-list">
+            <label><input type="radio" name="q3" value="a"> a) Ao final da execução haverá um endereço alocado na memória, já que o primeiro endereço fora desalocado pelo garbage collector.</label>
+            <label><input type="radio" name="q3" value="b"> b) Ao final da execução haverão dois endereços alocados na memória.</label>
+            <label><input type="radio" name="q3" value="c"> c) Ao final da execução haverá um endereço alocado na memória, já que o segundo endereço fora desalocado pelo garbage collector.</label>
+            <label><input type="radio" name="q3" value="d"> d) Ao final da execução haverão dois endereços alocados na memória, porém, o primeiro endereço alocado estará sem referência.</label>
+            <label><input type="radio" name="q3" value="e"> e) Ao final da execução haverão dois endereços alocados na memória, porém, o segundo endereço alocado estará sem referência.</label>
+        </div>
+        <div id="f3" class="feedback"></div>
+    </div>
+
+    <div class="question-block">
+        <p><strong>4)</strong> Considere o método de uma lista simplesmente ligada e que a referência atual marca o último nó desta lista:</p>
+        <div class="code-snippet">public void mostrar(){
+    Elemento e=inicio;
+    while(e!=atual){
+        System.out.println(e.getObjeto());
+        e=e.getProx();
+    }
+}</div>
+        <p>A referência e do tipo Elemento, juntamente com o loop neste método realizam:</p>
+        <div class="options-list">
+            <label><input type="radio" name="q4" value="a"> a) A iteração na lista simplesmente encadeada, enquanto não atinge o final da lista. Assim, exibe todos os elementos da lista.</label>
+            <label><input type="radio" name="q4" value="b"> b) A iteração na lista simplesmente encadeada, enquanto não atinge o final da lista. Assim, exibe todos os elementos da lista exceto o último.</label>
+            <label><input type="radio" name="q4" value="c"> c) A iteração na lista simplesmente encadeada, enquanto não atinge o final da lista. Assim, exibe todos os elementos da lista exceto o primeiro.</label>
+            <label><input type="radio" name="q4" value="d"> d) A iteração na lista simplesmente encadeada, enquanto não atinge o final da lista. Porém, pela condição no while essa iteração nunca terminará.</label>
+            <label><input type="radio" name="q4" value="e"> e) A iteração na lista simplesmente encadeada, enquanto não atinge o início da lista. Assim, exibe apenas o primeiro elemento da lista.</label>
+        </div>
+        <div id="f4" class="feedback"></div>
     </div>
 
     <h2>Parte 2: Questões Dissertativas</h2>
@@ -233,13 +267,18 @@
 
 <script>
     function validarProva() {
-        const gabaritoObjetivo = { q1: 'a', q2: 'e' };
+        const gabaritoObjetivo = { 
+            q1: 'a', 
+            q2: 'e',
+            q3: 'a',
+            q4: 'b'
+        };
         
         const gabaritoDissertativo = {
             d1: "Sugestão de Resposta:\nfor(int i = 0; i < indicePessoa; i++) {\n    if(lista[i].getId() == id) {\n        return i;\n    }\n}\nreturn -1;",
             d2a: "Sugestão de Resposta:\npublic int contarPares() {\n    int cont = 0;\n    Elemento e = inicio;\n    while(e != null) {\n        if(e.getN() % 2 == 0) cont++;\n        e = e.getProx();\n    }\n    return cont;\n}",
-            d2b: "Sugestão de Resposta:\nref.setProx(null);\natual = ref; // Conforme o desenho, remove o nó subsequente ao 'ref'",
-            d2c: "Sugestão de Resposta:\nNão. Em Java, o Garbage Collector não atua de forma instantânea. O objeto torna-se elegível para coleta quando não há mais referências para ele, mas a limpeza real ocorre conforme o gerenciamento da JVM."
+            d2b: "Sugestão de Resposta:\nref.setProx(null);\natual = ref;",
+            d2c: "Sugestão de Resposta:\nNão. Em Java, a remoção da memória física não é instantânea. O objeto torna-se apenas elegível para o Garbage Collector."
         };
 
         for (let q in gabaritoObjetivo) {
