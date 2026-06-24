@@ -39,11 +39,13 @@ O simulado foi construído em HTML/CSS/JS puro e cobre os principais temas cobra
 
 ## ⚙️ Como Usar
 
-Basta abrir o arquivo `indexED.html` diretamente no navegador — nenhuma dependência ou servidor é necessário.
+O simulado está disponível online e pode ser acessado diretamente pelo navegador através do GitHub Pages, sem necessidade de instalação ou configuração adicional.
 
-1. Responda as questões de múltipla escolha selecionando a alternativa desejada.
-2. Preencha as questões dissertativas nas áreas de texto.
-3. Clique em **"Finalizar e Validar Respostas"** para ver o gabarito e o feedback de cada questão.
+1. Acesse o link do projeto:
+   **[jovemog-dev.github.io/Teste-ED/](https://jovemog-dev.github.io/Teste-ED/)**
+2. Responda às questões de múltipla escolha selecionando a alternativa desejada.
+3. Preencha as questões dissertativas nas áreas de texto.
+4. Clique em **"Finalizar e Validar Respostas"** para visualizar o gabarito e o feedback de cada questão.
 
 ---
 
