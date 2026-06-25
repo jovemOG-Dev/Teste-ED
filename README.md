@@ -55,8 +55,5 @@ O simulado está disponível online e pode ser acessado diretamente pelo navegad
 - CSS3 (variáveis CSS, responsividade)
 - JavaScript Vanilla
 
----
-
-## 🎓 Contexto Acadêmico
-
+#
 > Projeto desenvolvido como ferramenta de revisão para avaliação de **Estrutura de Dados** — ADS Senac, 2026.
